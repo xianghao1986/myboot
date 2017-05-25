@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    data-password: test
+    password: test
+    driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 9000
+  context-path: /demo
+
+person:
+  name: sh
+  age: 18
