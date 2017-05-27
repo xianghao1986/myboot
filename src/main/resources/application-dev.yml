@@ -1,8 +1,18 @@
 spring:
   datasource:
-    data-password: test
-    password: test
+    username: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
 
 server:
   port: 9000
@@ -11,3 +21,13 @@ server:
 person:
   name: sh
   age: 18
+#控制台
+#debug: true
+
+
+
+
+
+
+
+
