@@ -25,38 +25,49 @@ public class TestController {
 	}
 
 	@PostMapping(value = "/user")
-	public String create(
+	public Object create(
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "email", defaultValue = "") String email) {
+        System.err.println("收到POST 请求 ");
 		User user = new User();
 		user.setEmail(email);
 		user.setName(name);
 		userRepository.save(user);
-		return "保存成功";
+        Result result = new Result();
+
+		return new Result("save success");
 	}
 
 
 	@GetMapping(value = "/user")
     public Object findList(){
-	    return userRepository.findAll();
+	    return new Result(userRepository.findAll());
     }
     @GetMapping(value = "/user/{id}")
     public Object findOne(@PathVariable("id") Integer id){
-        return userRepository.findOne(id);
+        return new Result(userRepository.findOne(id));
     }
     @PutMapping(value = "/user/{id}")
     public Object update(@PathVariable("id") Integer id, @RequestParam("name") String name, @RequestParam("email") String email){
+        System.err.println("收到update 请求 id:"+ id);
         User user = new User();
         user.setId(id);
         user.setEmail(email);
         user.setName(name);
         userRepository.save(user);
-        return "success";
+        return new Result("success");
     }
 
     @DeleteMapping(value = "/user/{id}")
     public Object delete(@PathVariable("id") Integer id){
+        System.err.println("收到detele 请求 id:"+ id);
         userRepository.delete(id);
-        return "success";
+        return new Result("success");
+    }
+
+    @RequestMapping(value = "*", method = RequestMethod.OPTIONS)
+    public Object options(){
+        System.err.println("收到options请求，返回allow");
+        return  new Result("allow");
     }
 }
