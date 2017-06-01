@@ -10,7 +10,7 @@ import java.io.IOException;
  * 解决ajax跨域的问题
  * Created by xianghao on 2017/5/29.
  */
-public class MyFilter implements Filter{
+public class CorsFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

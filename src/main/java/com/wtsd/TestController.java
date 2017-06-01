@@ -17,7 +17,8 @@ public class TestController {
 
 	private @Autowired PersonProperties config;
 
-	private @Autowired UserRepository userRepository;
+	private @Autowired UserService userService;
+
 
 	@RequestMapping(value = "/test")
 	public String test() {
@@ -32,7 +33,7 @@ public class TestController {
 		User user = new User();
 		user.setEmail(email);
 		user.setName(name);
-		userRepository.save(user);
+        userService.save(user);
         Result result = new Result();
 
 		return new Result("save success");
@@ -41,11 +42,11 @@ public class TestController {
 
 	@GetMapping(value = "/user")
     public Object findList(){
-	    return new Result(userRepository.findAll());
+	    return new Result(userService.findAll());
     }
     @GetMapping(value = "/user/{id}")
     public Object findOne(@PathVariable("id") Integer id){
-        return new Result(userRepository.findOne(id));
+        return new Result(userService.findOne(id));
     }
     @PutMapping(value = "/user/{id}")
     public Object update(@PathVariable("id") Integer id, @RequestParam("name") String name, @RequestParam("email") String email){
@@ -54,14 +55,14 @@ public class TestController {
         user.setId(id);
         user.setEmail(email);
         user.setName(name);
-        userRepository.save(user);
+        userService.save(user);
         return new Result("success");
     }
 
     @DeleteMapping(value = "/user/{id}")
     public Object delete(@PathVariable("id") Integer id){
         System.err.println("收到detele 请求 id:"+ id);
-        userRepository.delete(id);
+        userService.delete(id);
         return new Result("success");
     }
 
