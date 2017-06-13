@@ -9,8 +9,8 @@ import javax.annotation.PostConstruct;
 /**
  * Created by xianghao on 2017/5/26.
  */
-@Configuration
-@ImportResource(locations={"classpath:dubbo-provider.xml"})
+//@Configuration
+//@ImportResource(locations={"classpath:dubbo-provider.xml"})
 public class XmlConfig {
 
     @PostConstruct

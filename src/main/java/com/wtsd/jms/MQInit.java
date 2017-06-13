@@ -18,7 +18,7 @@ import javax.jms.MessageListener;
 /**
  * Created by xianghao on 2017/6/1.
  */
-//@Configuration
+@Configuration
 public class MQInit {
     private @Value("${jms.send.dest}") String dest;
     private @Value("${jms.server.addr}") String addr;
@@ -52,10 +52,12 @@ public class MQInit {
         SimpleMessageListenerContainer container = factory.createListenerContainer(endpoint);
         container.setConnectionFactory(connectionFactory);
 		container.setDestinationName(dest);
-//      container.setConcurrentConsumers(10);
+        container.setConcurrentConsumers(100);
 //		container.setMessageListener(jmsMsgListener());
         return factory;
     }
+
+
 
     @Bean
     public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory){
