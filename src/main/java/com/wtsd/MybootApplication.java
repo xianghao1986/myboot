@@ -25,7 +25,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SpringBootApplication
-//@EnableJms
+@EnableJms
 @EnableCaching
 public class MybootApplication {
 
@@ -39,8 +39,8 @@ public class MybootApplication {
 
 		AtomicInteger atomicInteger = new AtomicInteger();
 
-//		System.out.println("Sending an email message.");
-//		jmsTemplate.convertAndSend("QL_TEST3",new Email("xianghao@nationz.com","你好"));
+		System.out.println("Sending an email message.");
+		jmsTemplate.convertAndSend(new Email("xianghao@nationz.com","你好"));
 //		for (int i =0; i< 1; i++) {
 //			executorService.execute(new Runnable() {
 //				public void run() {

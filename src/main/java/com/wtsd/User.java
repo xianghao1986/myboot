@@ -1,16 +1,17 @@
 package com.wtsd;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by xianghao on 2017/5/25.
  */
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region = "city_code")
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

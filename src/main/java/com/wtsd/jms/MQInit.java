@@ -48,10 +48,8 @@ public class MQInit {
                 System.err.println("onMessage:"+message);
             }
         });
-//		endpoint.setDestination("QL_TEST22");
         SimpleMessageListenerContainer container = factory.createListenerContainer(endpoint);
         container.setConnectionFactory(connectionFactory);
-		container.setDestinationName(dest);
         container.setConcurrentConsumers(100);
 //		container.setMessageListener(jmsMsgListener());
         return factory;
@@ -61,7 +59,9 @@ public class MQInit {
 
     @Bean
     public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory){
-        return new JmsTemplate(connectionFactory);
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
+        jmsTemplate.setDefaultDestinationName(dest);
+        return jmsTemplate;
     }
 
 

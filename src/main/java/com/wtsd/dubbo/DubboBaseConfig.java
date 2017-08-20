@@ -45,7 +45,7 @@ public class DubboBaseConfig {
 	public ProtocolConfig protocol() {
 		ProtocolConfig protocolConfig = new ProtocolConfig();
 		protocolConfig.setName("dubbo");
-		protocolConfig.setPort(20880);
+		protocolConfig.setPort(20889);
 		protocolConfig.setThreads(1000);//服务线程池大小(固定大小)
 		protocolConfig.setAccepts(1000);//服务提供方最大可接受连接数
 		return protocolConfig;

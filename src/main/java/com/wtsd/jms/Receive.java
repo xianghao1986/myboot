@@ -20,7 +20,7 @@ public class Receive {
         System.out.println("Received <" + obj + ">");
     }
 
-    @JmsListener(destination = "mailbox2", containerFactory = "myFactory")
+    @JmsListener(destination = "mailbox2", containerFactory = "myFactory",concurrency = "100" )
     public void receiveMessage2(Object obj) {
         System.out.println("Received <" + obj + ">");
     }

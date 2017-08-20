@@ -1,4 +1,6 @@
-package com.wtsd;
+package com.wtsd.serivce;
+
+import com.wtsd.User;
 
 /**
  * Created by xianghao on 2017/6/1.
